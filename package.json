@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"description": "Small js package I use to help me deal with url and query parameters",
 	"scripts": {
-		"lint": "xo --fix",
+
 		"test": "xo && ava && tsd",
 		"watch:test": "ava --watch"
 	},
