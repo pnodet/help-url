@@ -46,7 +46,7 @@ export const getQueryString = (parameter, url = window.location) => {
  * let params = _Url.queryToObject(url);
  * //=> { param1: 'param1value', param2: 'param2value' }
  */
-export const queryToObject = (url) => {
+export const queryToObject = url => {
 	if (typeof url !== 'string') {
 		return {};
 	}
@@ -74,7 +74,7 @@ export const queryToObject = (url) => {
  * });
  * //=> returns: ?param1=param1value&param2=param2value
  */
-export const queryFromObject = (object) => {
+export const queryFromObject = object => {
 	let queryString = '';
 	let count = 0;
 
@@ -87,7 +87,7 @@ export const queryFromObject = (object) => {
 
 			queryString += `${(count > 0 ? '&' : '') + key}=${encodeURIComponent(
 				object[key],
-			).replace(/[!'()*]/g, (c) => `%${c.charCodeAt(0).toString(16)}`)}`;
+			).replace(/[!'()*]/g, c => `%${c.charCodeAt(0).toString(16)}`)}`;
 			count++;
 		}
 	}
@@ -109,7 +109,7 @@ export const queryFromObject = (object) => {
  * newURL = _Url.queryupdateParameter(initialURL, 'baz', 'foo');
  * //=> returns 'https://example.com?foo=bar&baz=foo'
  */
-export const queryupdateParameter = (url, key, value) => {
+export const queryUpdateParameter = (url, key, value) => {
 	const re = new RegExp(`([?&])${key}=.*?(&|#|$)`, 'i');
 	if (re.test(url)) {
 		return url.replace(re, `$1${key}=${value}$2`);
